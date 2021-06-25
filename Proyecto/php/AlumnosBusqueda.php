@@ -54,7 +54,7 @@
               <div class="form-group">
 
                     
-
+                <center><h1>Lista de Notas</h1></center>
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
@@ -120,7 +120,64 @@
            
                 
         </div>
-              
+
+        <?php
+
+            include('Conexion_DB.php');
+
+            $busquedaDni=$_REQUEST['dni'];
+
+            if(empty($busquedaDni)){
+                header("location: ..\Alumnos.html");
+
+            }
+            $consulta="SELECT `ID`, `DNI`, `Nombre y apellido`, `Fecha`, `archivo_binario`, `archivo_nombre`, `archivo_peso`, `archivo_tipo`, `archivo_link` FROM `tareas` Where DNI='".$busquedaDni."'";
+
+            
+            $resultado = mysqli_query($conexion,$consulta);
+
+            mysqli_close($conexion);
+        ?>
+            <center>
+            <h1>Lista de Tareas Subidas</h1>
+            <table style="border: 1px solid black;">
+
+                <thead>
+                    <tr>
+                        <th style=" background-color: #ADE06D; border: 1px solid black; text-align:center;">ID</th>
+                        <th style=" background-color: #ADE06D; border: 1px solid black; text-align:center;">Nombre y apellido</th>
+                        <th style=" background-color: #ADE06D; border: 1px solid black; text-align:center;">DNI</th>
+                        <th style=" background-color: #ADE06D; border: 1px solid black; text-align:center;">Fecha</th>
+                        <th style=" background-color: #ADE06D; border: 1px solid black; text-align:center;">Nombre del archivo</th>
+                        <th style=" background-color: #ADE06D; border: 1px solid black; text-align:center;">Peso</th>
+                        <th style=" background-color: #ADE06D; border: 1px solid black; text-align:center;">Tipo</th>
+                        <th style=" background-color: #ADE06D; border: 1px solid black; text-align:center;">Link</th>
+
+                    </tr>
+                </thead>
+
+
+
+                <?php
+                while($mostrar = mysqli_fetch_array($resultado)){ ?>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid black;"><b><?php echo $mostrar['ID'] ?></b></td>
+                            <td style="border: 1px solid black;"><b><?php echo $mostrar['Nombre y apellido'] ?></b></td>
+                            <td style="border: 1px solid black;"><?php echo $mostrar['DNI'] ?></td>
+                            <td style="border: 1px solid black;"><?php echo $mostrar['Fecha'] ?></td>
+                            <td style="border: 1px solid black;"><?php echo $mostrar['archivo_nombre'] ?></td>
+                            <td style="border: 1px solid black;"><?php echo $mostrar['archivo_peso'] ?> bits</td>
+                            <td style="border: 1px solid black;"><?php echo $mostrar['archivo_tipo'] ?></td>
+                            <td style="border: 1px solid black;"><a href="<?php echo $mostrar['archivo_link'] ?>" download="<?php echo $mostrar['archivo_link'] ?>">Descargar</a></td>
+                            
+                        </tr>
+                    </tbody>
+
+                <?php } ?>
+
+             </table>
+            <center>       
     </body>
     
 

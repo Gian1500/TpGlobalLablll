@@ -6,7 +6,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Profesores</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -186,17 +186,16 @@
                         <input type="submit" class="btn btn-success" value="Modificar">
                 </form>
 
-                <a href="Profesores.php"><button type="button" class="btn btn-dark">← Volver</button></a>            
+                          
                 
                 <form action="eliminar_alumno.php" method="POST" onsubmit="return ValidarEliminar();">
-                    
-                    
-                    <label for="">Confirma el DNI que quieres borrar --> </label>
-                    <input id="dniEliminar" style="text-align:center;" name="eliminar" type="number" value="<?php echo $busquedaDni ?>" required>
+                   
+                    <input id="dniEliminar" style="text-align:center;" name="eliminar" hidden type="number" value="<?php echo $busquedaDni ?>" required>
 
                     <input type="submit" class="btn btn-danger" value="Eliminar">
                 </form>
                 
+                 <a href="Profesores.php"><button type="button" class="btn btn-dark">← Volver</button></a> 
             
  
             </table>

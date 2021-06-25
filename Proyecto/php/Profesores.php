@@ -109,7 +109,7 @@
                     include('Conexion_DB.php');
                     $sql="SELECT * from notasalumnos"; 
                     $result=mysqli_query($conexion,$sql);
-
+                    
                     while($mostrar=mysqli_fetch_array($result)){
                         
 

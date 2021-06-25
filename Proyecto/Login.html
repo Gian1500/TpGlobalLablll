@@ -53,7 +53,7 @@
               
                 <div class="col-lg-8 col-md-10 mx-auto">
 
-                    <form action="php/login.php" method="POST" ></form>
+                    <form action="php/login.php" method="POST" >
                         <div class="mb-3">
                             <i class="fas fa-users"></i>
                           <label for="usuario" class="form-label">Usuario:</label>
@@ -66,6 +66,12 @@
                           <label for="Contraseña" class="form-label">Contraseña:</label>
                           <input type="password" class="form-control" name="contraseña" required>
                         </div>
+
+                        <div class="Form-check">
+                            <input type="checkbox" name="recordar" id="recordar" class="form-check-input" value="si">
+                            <label for="recordar">Recordarme</label>
+                        </div>
+                        
                         
                         <button type="submit" class="btn btn-primary" value="iniciar sesion">Ingresar</button>
                     </form>

@@ -4,14 +4,14 @@
 	if(isset($_POST['usuario'], $_POST['contraseña'])){
 		$usuario = $_POST['usuario'];
 		$password = MD5($_POST['contraseña']);
-
+		
 		$consulta = mysqli_query($conexion,"SELECT * FROM alumnos WHERE usuario='".$usuario."' and contraseña='".$password."'");
 		
 		$resultado= mysqli_num_rows($consulta);
 
-	}else{
-		echo "Error en POST";
+		
 	}
+
 	
 
 // cerrar conexión de base de datos
@@ -23,6 +23,16 @@
 
 if ($resultado==1) { 
 	
+	if (isset($_POST["recordar"])=="si") 
+		{
+			session_start();
+			$_SESSION['usuario']=$_POST['usuario'];
+			$_COOKIE['usuario']=$_SESSION['usuario'];
+			setcookie("Usuario",$usuario,time()+(60*60),"../assets/cookies");
+			setcookie("Usuario",$password,time()+(60*60),"../assets/cookies");
+		}else{
+			$_SESSION['usuario']=$_POST['usuario'];
+		}
 	
 	
 	?>
@@ -34,7 +44,7 @@ if ($resultado==1) {
 			</head>
 
 			<body>
-				<h1>Logueado Satifactoriamente! Seras redireccionado en 3 segundos...</h1>
+				<h1>Logueado Satifactoriamente! <?php echo $_SESSION['usuario'] ?> Seras redireccionado en 3 segundos...</h1>
 				<img src="../assets\img\authentication.png" alt="">
 			</body>
 		</html>
@@ -43,7 +53,7 @@ if ($resultado==1) {
 
 	<?php 
 
-	session_start();}
+	}
 
 else{
 		?>

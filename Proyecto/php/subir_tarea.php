@@ -1,7 +1,6 @@
 <?php
         include('Conexion_DB.php');
-    
-    
+ 
         $carpeta= "E:/XAMPP/htdocs/Proyecto/Tmp/";
         opendir($carpeta);
         $destino= $carpeta.$_FILES['archivo']['name'];
@@ -16,6 +15,7 @@
         $dni_autor=$_POST['dni_autor'];
         $fecha= date("Y-m-d H:i:s");
 
+		
         $contenido_tmp= addslashes(fread(fopen($nombre, "rb"), filesize($nombre)));
 
         // Obtener del array FILES (superglobal) los datos del binario .. nombre, tabamo y tipo.

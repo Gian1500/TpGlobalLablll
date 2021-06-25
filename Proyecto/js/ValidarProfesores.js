@@ -34,12 +34,12 @@ function ValidarNotas(){
     
     
 
-    if (nombre.length==="" || mat.length===0 || len.length===0 || soc.length===0 || ing.length===0 || nat.length===0 || fis.inf===0) {
+    if (nombre.length==="" || mat.length===0|| len.length===0 || soc.length===0 || ing.length===0 || nat.length===0 || fis.inf===0) {
         alert("Todos los campos deben estar COMPLETOS");
         return false;
     }
 
-    else if (mat==0 || mat<=11 || len==0 || len<=11 || soc==0 || soc<=11 || ing==0 || ing<=11 || nat==0 || nat<=11 || fis==0 || fis<=11 || inf==0 || inf<=11){
+    else if (mat<=0 || mat>11 || len<=0 || len>11 || soc<=0 || soc>11 || ing<=0 || ing>11 || nat<=0 || nat>11 || fis<=0 || fis>11 || inf<=0 || inf>11){
 
         alert("Las notas no pueden ser iguales a 0 o tener mas de 10");
         return false;
@@ -56,9 +56,10 @@ function ValidarNotas(){
 
 function ValidarEliminar(){
     
-    var dni;
+    var dni,nombre;
 
     dni=document.getElementById("dniEliminar").value;
+    nombre=document.getElementById("nombre").value;
 
     if (dni.length===0) {
         alert("Rellene el Campo DNI");
@@ -73,5 +74,11 @@ function ValidarEliminar(){
         alert("El DNI no puede ser mayor o menor a 8 DIGITOS");
         return false;
     }
-    alert("Eliminado");
+    
+    if (confirm("¿Desea eliminar el alumno: " + nombre + " DNI:" + dni + "?")) {
+    }else{
+        return false;
+    }
+    
+    
 }
